@@ -5,7 +5,7 @@
 @using (Html.BeginForm())
 {
     <div class ="headline">
-        <div class ="container">
+        
             @Html.LabelFor(model => model.Name)
             @Html.TextBoxFor(model => model.Name)
             <br>
@@ -18,13 +18,14 @@
             @Html.Label("Select tag")
             @Html.DropDownList("TagId")
      <br>
-        </div>
-    </div>
-    <br>
-
-    <div class="container">
+        
     <input type="submit" value="Add new item" class="btn btn-info" />
+    <br>
+    <p>@Html.ActionLink("Show all recipes", "Index")</p>
     </div>
+    
+
+   
+   
 }
-<p>@Html.ActionLink("Show all recipes", "Index")</p>
    
