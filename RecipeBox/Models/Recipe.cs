@@ -13,6 +13,7 @@ namespace RecipeBox.Models
         public string Name { get; set; }
         public string Instructions { get; set; }
         public virtual ICollection<Recipe> Ingredients { get; set; }
+        // public List<string> Ingredients { get; set; }
         public ICollection<TagRecipe> Tags { get;}
 
     
