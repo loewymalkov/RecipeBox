@@ -1,0 +1,24 @@
+@model RecipeBox.Models.Tag
+
+<h2>Tag Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.TagCategory): @Html.DisplayFor(model => model.TagCategory)</h3>
+
+@if(@Model.Recipes.Count == 0)
+{
+  <p>This tag does not contain any recipes</p>
+}
+else
+{
+  <h4>Recipes the tag contains:</h4>
+  <ul>
+  @foreach(var join in Model.Recipes)
+  {
+    <li>@join.Recipe.Description</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to tags", "Index")</p>
+<p>@Html.ActionLink("Edit Tag", "Edit", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Delete Tag", "Delete", new { id = Model.TagId })</p>

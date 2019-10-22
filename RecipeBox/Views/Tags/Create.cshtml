@@ -1,0 +1,10 @@
+@model RecipeBox.Models.Tag
+
+<h4>Add a new tag</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.TagCategory)
+    @Html.TextBoxFor(model => model.TagCategory)
+    <input type="submit" value="Add new tag" />
+}
+<p>@Html.ActionLink("Show all tags", "Index")</p>

@@ -1,0 +1,10 @@
+@model RecipeBox.Models.Tag
+
+<h2>Are you sure you want to delete this?</h2>
+
+@Html.DisplayNameFor(model => model.TagCategory): @Html.DisplayFor(model => model.TagCategory)
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to tags", "Index")

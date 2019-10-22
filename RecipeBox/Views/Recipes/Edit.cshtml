@@ -1,0 +1,33 @@
+@model ToDoList.Models.Recipe
+
+<h2>Edit</h2>
+
+<h4>Edit this recipe: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.RecipeId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    
+    <br>
+
+    @Html.LabelFor(model => model.Instructions)
+    @Html.EditorFor(model => model.Instructions)
+
+    <br>
+
+
+    @foreach (Recipe ingredient in Model.Ingredients)
+    {
+        <li>@ingredient.Ingredients</li>
+    }
+    
+    @Html.Label("Select tag")
+    @Html.DropDownList("TagId")<br>
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

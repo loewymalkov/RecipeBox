@@ -1,0 +1,31 @@
+@model RecipeBox.Models.Recipe
+
+<h4>Add a new recipe</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Instructions)
+    @Html.TextBoxFor(model => model.Instructions)
+
+
+    @Html.LabelFor("Enter your ingredients seperated with a comma")
+    @Html.TextBoxFor(string ingredientString)
+
+    @{
+    var ingredients = ingredientString.Split(',');
+
+    for (var i=0; i<ingredientString.Length; i++)
+    {
+        Model.Ingredients.Add(ingredients);
+    }
+    }
+
+    @Html.Label("Select tag")
+    @Html.DropDownList("TagId")
+
+    <input type="submit" value="Add new item" class="btn btn-info" />
+}
+<p>@Html.ActionLink("Show all recipes", "Index")</p>
