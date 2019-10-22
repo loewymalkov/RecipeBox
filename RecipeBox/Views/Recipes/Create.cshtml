@@ -4,19 +4,27 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)
+    <div class ="headline">
+        <div class ="container">
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name)
+            <br>
+            @Html.LabelFor(model => model.Instructions)
+            @Html.TextAreaFor(model => model.Instructions)
+            <br>
+            @Html.LabelFor(model => model.Ingredients)
+            @Html.TextAreaFor(model => model.Ingredients)
+            <br>
+            @Html.Label("Select tag")
+            @Html.DropDownList("TagId")
+     <br>
+        </div>
+    </div>
+    <br>
 
-    @Html.LabelFor(model => model.Instructions)
-    @Html.TextBoxFor(model => model.Instructions)
-
-    @Html.LabelFor(model => model.Ingredients)
-    @Html.TextBoxFor(model => model.Ingredients)
-
-    @Html.Label("Select tag")
-    @Html.DropDownList("TagId")
-
+    <div class="container">
     <input type="submit" value="Add new item" class="btn btn-info" />
+    </div>
 }
 <p>@Html.ActionLink("Show all recipes", "Index")</p>
    

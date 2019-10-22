@@ -20,11 +20,11 @@ else
   <ul>
   @foreach(var join in Model.Tags)
   {
-    <li>@join.Tag.TagCategory</li>
+    <li class="font-weight-bold">@join.Tag.TagCategory</li>
     @using (Html.BeginForm("DeleteTag", "Recipes"))
     {
       @Html.Hidden("joinId", @join.TagRecipeId)
-      <input type="submit" value="Delete"/>
+      <input type="submit" value="Delete" class="btn btn-danger"/>
     }
   }
   </ul>
