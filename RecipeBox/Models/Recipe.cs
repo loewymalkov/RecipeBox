@@ -12,11 +12,8 @@ namespace RecipeBox.Models
         public int RecipeId { get; set; }
         public string Name { get; set; }
         public string Instructions { get; set; }
-        public virtual ICollection<Recipe> Ingredients { get; set; }
-        // public List<string> Ingredients { get; set; }
+        public string Ingredients { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public ICollection<TagRecipe> Tags { get;}
-
-    
-
     }
 }

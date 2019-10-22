@@ -1,4 +1,6 @@
-@model ToDoList.Models.Recipe
+@using System.Collections.Generic;
+
+@model RecipeBox.Models.Recipe
 
 <h2>Edit</h2>
 
@@ -18,12 +20,10 @@
 
     <br>
 
+    @Html.LabelFor(model => model.Ingredients)
+    @Html.EditorFor(model => model.Ingredients)
 
-    @foreach (Recipe ingredient in Model.Ingredients)
-    {
-        <li>@ingredient.Ingredients</li>
-    }
-    
+
     @Html.Label("Select tag")
     @Html.DropDownList("TagId")<br>
 

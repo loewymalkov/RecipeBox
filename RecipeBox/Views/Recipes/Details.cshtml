@@ -1,15 +1,13 @@
+@using System.Collections.Generic;
+
 @model RecipeBox.Models.Recipe
+
 
 <h2>Recipe Instructions</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
-<ul>
-    @foreach (Recipe ingredients in Model.Ingredients)
-    {
-        <li>@ingredient.Ingredients</li>
-    }
-</ul>
+<h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
 
 
 @if(@Model.Tags.Count == 0)

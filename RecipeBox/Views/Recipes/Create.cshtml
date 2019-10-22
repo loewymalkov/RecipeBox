@@ -10,26 +10,8 @@
     @Html.LabelFor(model => model.Instructions)
     @Html.TextBoxFor(model => model.Instructions)
 
-
-    @Html.LabelFor("Enter your ingredients seperated with a comma")
-    @Html.TextBoxFor(string ingredientString)
-
-    @{
-    
-    if (ingredientsString.Length == 1)
-    {
-        Model.Ingredients.Add(ingredientsString);
-    }
-    else
-    {
-        var ingredients = ingredientString.Split(',');
-        for (var i=0; i<ingredientString.Length; i++)
-        {
-            Model.Ingredients.Add(ingredients);
-        }
-    }
-
-    }
+    @Html.LabelFor(model => model.Ingredients)
+    @Html.TextBoxFor(model => model.Ingredients)
 
     @Html.Label("Select tag")
     @Html.DropDownList("TagId")
