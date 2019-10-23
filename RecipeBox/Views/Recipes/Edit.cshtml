@@ -23,6 +23,12 @@
     @Html.LabelFor(model => model.Ingredients)
     @Html.EditorFor(model => model.Ingredients)
 
+    <br>
+
+    @Html.LabelFor(model => model.Rating)
+    @Html.EditorFor(model => model.Rating)
+
+    <br>
 
     @Html.Label("Select tag")
     @Html.DropDownList("TagId")<br>

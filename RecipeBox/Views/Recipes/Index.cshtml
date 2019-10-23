@@ -9,7 +9,13 @@
   <h3>
     @foreach (Recipe recipe in Model)
     {
-      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
+      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId }), 
+      @for (var i=0; i < recipe.Rating; i++)
+      {
+        <span>★</span>
+      }
+      
+        </li>
     }
   </h3>
 } 
