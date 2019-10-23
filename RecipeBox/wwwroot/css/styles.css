@@ -1,6 +1,7 @@
 body {
     background-color: rgb(224, 251, 255);
     
+    
 }
  
 div.headline {
@@ -17,7 +18,8 @@ div .jumbotron {
 
 div .recipehome {
      text-align: center;
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     font-family: 'Modak', cursive;
+     font-family: 'Indie Flower', cursive;
                     
 } 
 p {
