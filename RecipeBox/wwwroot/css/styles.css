@@ -1,10 +1,73 @@
 body {
     background-color: rgb(224, 251, 255);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
 }
-
+ 
 div.headline {
     width: 400px;
     height: 200px;
 }
 
+
+div .jumbotron {
+    background-color: rgb(132, 172, 169);
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+div .recipehome {
+     text-align: center;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    
+} 
+p {
+    text-align:left;
+}
+
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+ 
+    
+  }
+ 
+  .btn:hover {background: #eee;}
+  
+  .success {color: green;}
+  .info {color: dodgerblue;}
+  .warning {color: orange;}
+  .danger {color: red;}
+  .default {color: black;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+  }
+  
+  
+  .column.side {
+    width: 25%;
+  }
+  
+  
+  .column.middle {
+    width: 50%;
+  }
+  
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .header {
+    background-color: rgb(110, 132, 145);
+    padding: 20px;
+    text-align: center;
+  }

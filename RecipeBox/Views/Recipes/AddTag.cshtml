@@ -1,7 +1,7 @@
 @model RecipeBox.Models.Recipe
-
+<div class ="jumbotron">
 <h2>Add a tag</h2>
-
+</div>
 <h4>Add a tag to this task: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
@@ -11,7 +11,7 @@
     @Html.Label("Select tag")
     @Html.DropDownList("TagId")
 
-    <input type="submit" value="Save" />
+    <input type="submit" value="Save" class ="btn default" />
 }
 
 <p>@Html.ActionLink("Back to list", "Index")</p>

@@ -1,36 +1,46 @@
 @using System.Collections.Generic;
 
 @model RecipeBox.Models.Recipe
-
+<div class ="jumbotron">
 
 <h2>Recipe Instructions</h2>
+</div>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
-<h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
+<div class ="header">
+  <h3>@Html.DisplayFor(model => model.Name)</h3>
+</div>
 
+<div class ="column.middle">
+  <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
+  <h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
+</div>
 
+<div class ="column.side">
 @if(@Model.Tags.Count == 0)
 {
   <p>This recipe does not have any tags associated to it</p>
 }
 else
 {
+
   <h4>Tags for this recipe to:</h4>
-  <ul>
+  
   @foreach(var join in Model.Tags)
   {
     <li class="font-weight-bold">@join.Tag.TagCategory</li>
     @using (Html.BeginForm("DeleteTag", "Recipes"))
     {
-      @Html.Hidden("joinId", @join.TagRecipeId)
-      <input type="submit" value="Delete" class="btn btn-danger"/>
+      @Html.Hidden("joinId", @join.TagRecipeId) 
+      <input type="submit" value="Delete" class="btn default"/>
     }
   }
-  </ul>
+  
 }
-
+</div>
+<div class ="column.side">
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
 <p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
 <p>@Html.ActionLink("Add a Tag", "AddTag", new { id = Model.RecipeId })</p>
+
+</div>

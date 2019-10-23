@@ -1,7 +1,7 @@
 @model RecipeBox.Models.Recipe
-
+<div class ="jumbotron">
 <h4>Add a new recipe</h4>
-
+</div>
 @using (Html.BeginForm())
 {
     <div class ="headline">
@@ -19,7 +19,7 @@
             @Html.DropDownList("TagId")
      <br>
         
-    <input type="submit" value="Add new item" class="btn btn-info" />
+    <input type="submit" value="Add new item" class="btn default" />
     <br>
     <p>@Html.ActionLink("Show all recipes", "Index")</p>
     </div>
