@@ -12,6 +12,7 @@ namespace RecipeBox.Models
         }
         public int IngredientId { get; set; }
         public string IngredientName { get; set; }
+        // public string Quantity { get; set; }
         public ICollection<RecipeIngredient> Recipes { get;}
     }
 }

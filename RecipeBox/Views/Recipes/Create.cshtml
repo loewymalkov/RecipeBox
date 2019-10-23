@@ -12,8 +12,12 @@
             @Html.LabelFor(model => model.Instructions)
             @Html.TextAreaFor(model => model.Instructions)
             <br>
-            @Html.LabelFor(model => model.Ingredients)
-            @Html.TextAreaFor(model => model.Ingredients)
+            @Html.Label("Select ingredient")
+            @Html.DropDownList("IngredientId")
+            @Html.DropDownList("IngredientId", string.Empty)
+            @Html.DropDownList("IngredientId", string.Empty)
+            @Html.DropDownList("IngredientId", string.Empty)
+            @Html.DropDownList("IngredientId", string.Empty)
             <br>
             @Html.LabelFor(model => model.Rating)
             @Html.TextAreaFor(model => model.Rating)

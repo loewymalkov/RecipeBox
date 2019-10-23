@@ -38,7 +38,7 @@ namespace RecipeBox.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Recipe recipe, int TagId)
+        public async Task<ActionResult> Create(Recipe recipe, int TagId, int IngredientId)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
@@ -47,6 +47,10 @@ namespace RecipeBox.Controllers
             if (TagId != 0)
             {
                 _db.TagRecipe.Add(new TagRecipe() { TagId = TagId, RecipeId = recipe.RecipeId });
+            }
+            if (IngredientId != 0)
+            {
+                _db.RecipeIngredient.Add(new RecipeIngredient() { IngredientId = IngredientId, RecipeId = recipe.RecipeId });
             }
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -57,6 +61,8 @@ namespace RecipeBox.Controllers
         var thisRecipe = _db.Recipes
             .Include(recipe => recipe.Tags)
             .ThenInclude(join => join.Tag)
+            .Include(recipe => recipe.Ingredients)
+            .ThenInclude(join => join.Ingredient)
             .FirstOrDefault(recipe => recipe.RecipeId == id);
         return View(thisRecipe);
         }
@@ -65,15 +71,20 @@ namespace RecipeBox.Controllers
         {
             var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
             ViewBag.TagId = new SelectList(_db.Tags, "TagId", "TagCategory");
+            ViewBag.IngredientId = new SelectList(_db.Ingredients, "IngredientId", "IngredientName");
             return View(thisRecipe);
         }
 
         [HttpPost]
-        public ActionResult Edit(Recipe recipe, int TagId)
+        public ActionResult Edit(Recipe recipe, int TagId, int IngredientId)
         {
             if (TagId != 0)
             {
                 _db.TagRecipe.Add(new TagRecipe() { TagId = TagId, RecipeId = recipe.RecipeId });
+            }
+            if (IngredientId != 0)
+            {
+                _db.RecipeIngredient.Add(new RecipeIngredient() { IngredientId = IngredientId, RecipeId = recipe.RecipeId });
             }
             _db.Entry(recipe).State = EntityState.Modified;
             _db.SaveChanges();
@@ -93,6 +104,24 @@ namespace RecipeBox.Controllers
             if (TagId != 0)
             {
             _db.TagRecipe.Add(new TagRecipe() { TagId = TagId, RecipeId = recipe.RecipeId });
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AddIngredient(int id)
+        {
+            var thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
+            ViewBag.IngredientId = new SelectList(_db.Ingredients, "IngredientId", "IngredientName");
+            return View(thisRecipe);
+        }
+
+        [HttpPost]
+        public ActionResult AddIngredient(Recipe recipe, int IngredientId)
+        {
+            if (IngredientId != 0)
+            {
+            _db.RecipeIngredient.Add(new RecipeIngredient() { IngredientId = IngredientId, RecipeId = recipe.RecipeId });
             }
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -118,6 +147,15 @@ namespace RecipeBox.Controllers
         {
             var joinEntry = _db.TagRecipe.FirstOrDefault(entry => entry.TagRecipeId == joinId);
             _db.TagRecipe.Remove(joinEntry);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteIngredient(int joinId)
+        {
+            var joinEntry = _db.RecipeIngredient.FirstOrDefault(entry => entry.RecipeIngredientId == joinId);
+            _db.RecipeIngredient.Remove(joinEntry);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

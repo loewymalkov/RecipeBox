@@ -1,6 +1,6 @@
 @using System.Collections.Generic;
 
-
+@using RecipeBox.Models
 @model RecipeBox.Models.Recipe
 <div class ="jumbotron">
 
@@ -14,7 +14,26 @@
 <div class ="column.middle">
   <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
 
-  <h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
+    @if(@Model.Ingredients.Count == 0)
+  {
+    <p>This recipe does not have any ingredients associated to it</p>
+  }
+  else
+  {
+
+    <h4>Ingredients for this recipe to:</h4>
+    
+    @foreach(var join in Model.Ingredients)
+    {
+      <li class="font-weight-bold">@join.Ingredient.IngredientName</li>
+      @using (Html.BeginForm("DeleteIngredient", "Recipes"))
+      {
+        @Html.Hidden("joinId", @join.RecipeIngredientId) 
+        <input type="submit" value="Delete" class="btn default"/>
+      }
+    }
+    
+  }
 
   <h3>@Html.DisplayNameFor(model => model.Rating): 
     @for (var i=0; i < Model.Rating; i++)
@@ -55,5 +74,7 @@ else
 <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
 <p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
 <p>@Html.ActionLink("Add a Tag", "AddTag", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Add an Ingredient", "AddIngredient", new { id = Model.RecipeId})</p>
+
 
 </div>

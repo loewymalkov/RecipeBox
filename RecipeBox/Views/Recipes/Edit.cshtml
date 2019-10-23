@@ -1,5 +1,6 @@
 @using System.Collections.Generic;
 
+@using RecipeBox.Models
 @model RecipeBox.Models.Recipe
 <div class ="jumbotron">
 <h2>Edit</h2>
@@ -20,8 +21,13 @@
 
     <br>
 
-    @Html.LabelFor(model => model.Ingredients)
-    @Html.EditorFor(model => model.Ingredients)
+    @Html.Label("Select ingredient")
+
+    @foreach (var ingredient in Model.Ingredients)
+    {
+    <span>@Html.CheckBox("@ingredient.IngredientName", true)</span>
+    }
+    
 
     <br>
 
