@@ -121,5 +121,15 @@ namespace RecipeBox.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<ActionResult> SortByRating()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var userList = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id);
+            var userRecipes = userList.OrderBy(order => order.Rating);
+            return View("Index", userRecipes);
+        }
     }
 }
