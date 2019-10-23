@@ -1,5 +1,6 @@
 @using System.Collections.Generic;
 
+
 @model RecipeBox.Models.Recipe
 <div class ="jumbotron">
 
@@ -12,8 +13,18 @@
 
 <div class ="column.middle">
   <h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
+
   <h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
-  <h3>@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)</h3>
+
+  <h3>@Html.DisplayNameFor(model => model.Rating): 
+    @for (var i=0; i < Model.Rating; i++)
+      {
+        <span>★</span>
+      }
+      
+  </h3>
+
+  
 
 </div>
 
