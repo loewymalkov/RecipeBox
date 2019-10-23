@@ -7,10 +7,12 @@ namespace RecipeBox.Models
         public Tag()
         {
             this.Recipes = new HashSet<TagRecipe>();
+           
         }
 
         public int TagId { get; set; }
         public string TagCategory { get; set; }
         public virtual ICollection<TagRecipe> Recipes { get; set; }
+    
     }
 }

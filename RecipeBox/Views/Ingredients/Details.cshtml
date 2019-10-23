@@ -1,0 +1,25 @@
+@model RecipeBox.Models.Ingredient
+<div class ="jumbotron">
+<h2>Ingredient Details</h2>
+</div>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.IngredientName): @Html.DisplayFor(model => model.IngredientName)</h3>
+
+@if(@Model.Recipes.Count == 0)
+{
+  <p>This Ingredient does not contain any recipes</p>
+}
+else
+{
+  <h4>Recipes the Ingredient contains:</h4>
+  <ul>
+  @foreach(var join in Model.Recipes)
+  {
+    <li>@join.Recipe.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to Ingredients", "Index")</p>
+<p>@Html.ActionLink("Edit Ingredient", "Edit", new { id = Model.IngredientId })</p>
+<p>@Html.ActionLink("Delete Ingredient", "Delete", new { id = Model.IngredientId })</p>

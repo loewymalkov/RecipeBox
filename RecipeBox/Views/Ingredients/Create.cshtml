@@ -1,0 +1,11 @@
+@model RecipeBox.Models.Ingredient
+<div class ="jumbotron">
+<h4>Add a new ingredient</h4>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.IngredientName)
+    @Html.TextBoxFor(model => model.IngredientName)
+    <input type="submit" value="Add new ingredient" />
+}
+<p>@Html.ActionLink("Show all Ingredients", "Index")</p>

@@ -1,0 +1,18 @@
+@using RecipeBox.Models;
+@model List<RecipeBox.Models.Ingredient>;
+<div class ="jumbotron">
+<h1>Ingredients</h1>
+</DIV>
+@if (@Model.Count == 0)
+{
+  <h3>No Ingredients have been added yet!</h3>
+} 
+
+@foreach (Ingredient ingredient in Model)
+{
+  <li>@Html.ActionLink($"{ingredient.IngredientName}", "Details", new { id = ingredient.IngredientId })</li>
+}
+
+<p>@Html.ActionLink("Add new Ingredient", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
