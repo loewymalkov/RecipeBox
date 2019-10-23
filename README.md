@@ -17,14 +17,16 @@ User can add recipes and cooking instructions or view their current recipes with
 
 ## Specs
 
-| Behavior | Input | Output |
+| Scenario | When given that | Result |
 |-|-|-|
-| | | |
-| | | |
-| | | |
-| | | |
+| user can add recipe with ingredients and instructions | "Cheeseburger", "cook burger", "patty, buns, tomato"| Recipe for Cheeseburger; "Instructions: cook burger"; "Ingredients: patty, buns, tomato" |
+| user can add tags to a recipe | "American" | "Cheeseburger tags: American"|
+| user can update and delete tags | user clicks 'edit' or 'delete' links |  deletes tag from database |
+| user can edit recipe | "Bacon Cheeseburger", "bacon" | "Recipe for Bacon Cheeseburger"; "Instructions: cook burger"; "Ingredients: patty, buns, tomato, bacon" |
+| user can delete recipe | 'delete' | delete recipe from database |
+| user can rate recipe | "5" | "Bacon Cheeseburger: *****" |
+| user can sort recipes by rating | 'order by rating' | orders by star rating (ascending) |
 
-## Known Bugs
 
 ## Technologies
 
